@@ -9,52 +9,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class FXMLDocumentController implements Initializable {
-    
-    private Label label;
+   
     @FXML
     private Label firstValue;
     @FXML
     private Label displayOperator;
     @FXML
     private Label secondValue;
-    @FXML
-    private Button allClear;
-    @FXML
-    private Button del;
-    @FXML
-    private Button percent;
-    @FXML
-    private Button divide;
-    @FXML
-    private Button btn7;
-    @FXML
-    private Button btn8;
-    @FXML
-    private Button btn9;
-    @FXML
-    private Button multiplication;
-    @FXML
-    private Button btn4;
-    @FXML
-    private Button btn5;
-    @FXML
-    private Button btn6;
-    @FXML
-    private Button subtract;
-    @FXML
-    private Button btn1;
-    @FXML
-    private Button btn2;
-    @FXML
-    private Button btn3;
-    @FXML
-    private Button add;
-    @FXML
-    private Button btn0;
-    @FXML
-    private Button point;
-    @FXML
-    private Button equal;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,10 +25,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void allClear(ActionEvent event) {
+        firstValue.setText(null);
+        secondValue.setText(null);
+        displayOperator.setText(null);
     }
 
     @FXML
     private void del(ActionEvent event) {
+        if(firstValue.getText().length() > 0){
+            firstValue.setText(firstValue.getText().substring(0, firstValue.getText().length()-1));
+        }else if(firstValue.getText().length() < 0 && displayOperator != null){
+            displayOperator.setText(null);
+        }
+        
     }
 
     @FXML
@@ -76,10 +46,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void operator(ActionEvent event) {
+        displayOperator.setText(((Button)event.getSource()).getText());
     }
 
     @FXML
     private void number(ActionEvent event) {
+        String clickValue = ((Button)event.getSource()).getText();
+        firstValue.setText(firstValue.getText() + clickValue);
+    }
+
+    @FXML
+    private void exit(ActionEvent event) {
+        System.exit(0);
     }
     
 }
