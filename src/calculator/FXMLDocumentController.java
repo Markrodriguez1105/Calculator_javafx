@@ -25,9 +25,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void allClear(ActionEvent event) {
-        firstValue.setText(null);
-        secondValue.setText(null);
-        displayOperator.setText(null);
+        firstValue.setText("");
+        secondValue.setText("");
+        displayOperator.setText("");
     }
 
     @FXML
@@ -42,11 +42,14 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void equal(ActionEvent event) {
+        compute(Integer.parseInt(firstValue.getText()), Integer.parseInt(secondValue.getText()), displayOperator.getText());
     }
 
     @FXML
     private void operator(ActionEvent event) {
-        displayOperator.setText(((Button)event.getSource()).getText());
+        if(!firstValue.getText().isBlank()){
+            displayOperator.setText(((Button)event.getSource()).getText());
+        }
     }
 
     @FXML
@@ -58,6 +61,24 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void exit(ActionEvent event) {
         System.exit(0);
+    }
+    
+    int compute(int num1, int num2, String op){
+        switch (op) {
+            case "+" ->{
+                return num1 + num2;
+            }
+            case "-" ->{
+                return num1 - num2;
+            }
+            case "×" ->{
+                return num1 * num2;
+            }
+            case "÷" ->{
+                return num1 / num2;
+            }
+        }
+        return 0;
     }
     
 }
