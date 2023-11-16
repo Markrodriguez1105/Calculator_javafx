@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
+import javafx.scene.text.Font;
 
 public class FXMLDocumentController implements Initializable {
 
@@ -53,8 +54,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void equal(ActionEvent event) {
         if (!firstValue.getText().isBlank() && !secondValue.getText().isBlank() && !displayOperator.getText().isBlank()) {
-            firstValue.setText(compute(Integer.parseInt(secondValue.getText()),
-                    Integer.parseInt(firstValue.getText()), displayOperator.getText()));
+            firstValue.setText(compute(Double.parseDouble(secondValue.getText()),
+                    Double.parseDouble(firstValue.getText()), displayOperator.getText()));
             secondValue.setText("");
             displayOperator.setText("");
             clearFirst = true;
@@ -66,8 +67,8 @@ public class FXMLDocumentController implements Initializable {
     private void operator(ActionEvent event) {
         String op = ((Labeled)event.getSource()).getText();
         if (!secondValue.getText().isBlank() && !firstValue.getText().isBlank()) {
-            secondValue.setText(compute(Integer.parseInt(secondValue.getText()),
-                    Integer.parseInt(firstValue.getText()), displayOperator.getText()));
+            secondValue.setText(compute(Double.parseDouble(secondValue.getText()),
+                    Double.parseDouble(firstValue.getText()), displayOperator.getText()));
             firstValue.setText("");
             displayOperator.setText(op);
         }
@@ -98,7 +99,8 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void percentage(ActionEvent event) {
-        firstValue.setText(computePercent(Integer.parseInt(firstValue.getText())));
+        displayOperator.setText(((Labeled)event.getSource()).getText());
+        firstValue.setText(computePercent(Double.parseDouble(firstValue.getText())));
     }
     
     @FXML
@@ -147,7 +149,4 @@ public class FXMLDocumentController implements Initializable {
             return value;
         }
     }
-
-    
-
 }
