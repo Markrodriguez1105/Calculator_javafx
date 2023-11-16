@@ -87,7 +87,7 @@
                               <Font name="Courier New Bold" size="17.0" />
                           </font>
                       </Button>
-                      <Button layoutX="10.0" layoutY="9.0" mnemonicParsing="false" onAction="#operator" prefHeight="99.0" prefWidth="339.0" style="-fx-background-color: NONE;" text="\%" textFill="#ff7c00" GridPane.columnIndex="2">
+                      <Button layoutX="10.0" layoutY="9.0" mnemonicParsing="false" onAction="#percentage" prefHeight="99.0" prefWidth="339.0" style="-fx-background-color: NONE;" text="\%" textFill="#ff7c00" GridPane.columnIndex="2">
                           <font>
                               <Font name="Courier New Bold" size="25.0" />
                           </font>
@@ -162,7 +162,7 @@
                               <Font name="Courier New Bold" size="25.0" />
                           </font>
                       </Button>
-                      <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#number" prefHeight="99.0" prefWidth="339.0" style="-fx-background-color: NONE;" text="." textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                      <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#point" prefHeight="99.0" prefWidth="339.0" style="-fx-background-color: NONE;" text="." textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
                           <font>
                               <Font name="Courier New Bold" size="25.0" />
                           </font>
