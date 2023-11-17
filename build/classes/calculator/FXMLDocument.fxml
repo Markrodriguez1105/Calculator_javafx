@@ -45,9 +45,9 @@
                       <RowConstraints maxHeight="87.99999618530273" minHeight="10.0" prefHeight="55.66666030883789" vgrow="SOMETIMES" />
                   </rowConstraints>
                   <children>
-                      <Label fx:id="firstValue" alignment="BOTTOM_RIGHT" prefHeight="44.0" prefWidth="269.0" text="123456789" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                      <Label fx:id="firstValue" alignment="BOTTOM_RIGHT" prefHeight="44.0" prefWidth="269.0" text="0000000000" textAlignment="RIGHT" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                           <font>
-                              <Font name="Courier New Bold" size="36.0" />
+                              <Font name="Courier New Bold" size="33.0" />
                           </font>
                       </Label>
                       <Label fx:id="displayOperator" alignment="BOTTOM_CENTER" layoutX="91.0" layoutY="55.0" prefHeight="103.0" prefWidth="258.0" text="+" textFill="WHITE" GridPane.rowIndex="1">
@@ -55,7 +55,7 @@
                               <Font name="Courier New Bold" size="36.0" />
                           </font>
                       </Label>
-                      <Label fx:id="secondValue" alignment="BOTTOM_RIGHT" layoutX="9.0" layoutY="55.0" prefHeight="67.0" prefWidth="253.0" text="123456789" textFill="#ffffff8f" GridPane.columnIndex="1">
+                      <Label fx:id="secondValue" alignment="BOTTOM_RIGHT" layoutX="9.0" layoutY="55.0" prefHeight="67.0" prefWidth="253.0" text="0000000" textFill="#ffffff8f" GridPane.columnIndex="1">
                           <font>
                               <Font name="Courier New" size="20.0" />
                           </font>

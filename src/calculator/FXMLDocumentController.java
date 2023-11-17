@@ -31,7 +31,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void allClear(ActionEvent event) {
-        firstValue.setText("");
+        firstValue.setText("0");
         secondValue.setText("");
         displayOperator.setText("");
         clearFirst = true;
@@ -44,10 +44,13 @@ public class FXMLDocumentController implements Initializable {
         }
         else if (firstValue.getText().isEmpty() && !displayOperator.getText().isEmpty()) {
             displayOperator.setText("");
-        }
-        else {
             firstValue.setText(secondValue.getText());
             secondValue.setText("");
+        }
+
+        if (firstValue.getText().isEmpty()) {
+            firstValue.setText("");
+            clearFirst = true;
         }
     }
 
@@ -57,7 +60,7 @@ public class FXMLDocumentController implements Initializable {
             firstValue.setText(compute(Double.parseDouble(secondValue.getText()),
                     Double.parseDouble(firstValue.getText()), displayOperator.getText()));
             secondValue.setText("");
-            displayOperator.setText("");
+            displayOperator.setText("=");
             clearFirst = true;
         }
 
@@ -65,22 +68,23 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void operator(ActionEvent event) {
-        String op = ((Labeled)event.getSource()).getText();
+        String op = ((Labeled) event.getSource()).getText();
         if (!secondValue.getText().isBlank() && !firstValue.getText().isBlank()) {
             secondValue.setText(compute(Double.parseDouble(secondValue.getText()),
                     Double.parseDouble(firstValue.getText()), displayOperator.getText()));
             firstValue.setText("");
             displayOperator.setText(op);
         }
-        else if(!firstValue.getText().isBlank()){
+        else if (!firstValue.getText().isBlank()) {
             secondValue.setText(firstValue.getText());
             firstValue.setText("");
             displayOperator.setText(op);
-        }else{
+        }
+        else {
             displayOperator.setText(op);
         }
         clearFirst = true;
-        
+
     }
 
     @FXML
@@ -90,28 +94,33 @@ public class FXMLDocumentController implements Initializable {
             String clickValue = ((Labeled) event.getSource()).getText();
             firstValue.setText(firstValue.getText() + clickValue);
             clearFirst = false;
-        }else{
+        }
+        else {
             String clickValue = ((Labeled) event.getSource()).getText();
             firstValue.setText(firstValue.getText() + clickValue);
         }
-
     }
-    
+
     @FXML
     private void percentage(ActionEvent event) {
-        displayOperator.setText(((Labeled)event.getSource()).getText());
-        firstValue.setText(computePercent(Double.parseDouble(firstValue.getText())));
+        if (!firstValue.getText().isEmpty()) {
+            displayOperator.setText(((Labeled) event.getSource()).getText());
+            firstValue.setText(computePercent(Double.parseDouble(firstValue.getText())));
+            displayOperator.setText("=");
+        }
+
     }
-    
+
     @FXML
     private void point(ActionEvent event) {
-        if(clearFirst){
-            firstValue.setText("0" + ((Labeled)event.getSource()).getText());
+        if (clearFirst) {
+            firstValue.setText("0" + ((Labeled) event.getSource()).getText());
             clearFirst = false;
-        }else if(!firstValue.getText().contains(".")){
-            firstValue.setText(firstValue.getText() + ((Labeled)event.getSource()).getText());
         }
-        
+        else if (!firstValue.getText().contains(".")) {
+            firstValue.setText(firstValue.getText() + ((Labeled) event.getSource()).getText());
+        }
+
     }
 
     @FXML
@@ -132,7 +141,12 @@ public class FXMLDocumentController implements Initializable {
                 result = num1 * num2;
             }
             case "÷" -> {
-                result = num1 / num2;
+                if(num2 == 0){
+                    return "Syntax Error";
+                }else{
+                    result = num1 / num2;
+                }
+                    
             }
         }
         return removePoint(String.valueOf(result));
@@ -141,11 +155,12 @@ public class FXMLDocumentController implements Initializable {
     String computePercent(double num) {
         return removePoint(String.valueOf((num * 0.01)));
     }
-    
-    String removePoint(String value){
-        if(".0".equals(value.substring(value.length()-2))){
-            return value.substring(0, value.length()-2);
-        }else{
+
+    String removePoint(String value) {
+        if (".0".equals(value.substring(value.length() - 2))) {
+            return value.substring(0, value.length() - 2);
+        }
+        else {
             return value;
         }
     }
